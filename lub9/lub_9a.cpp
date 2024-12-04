@@ -2,9 +2,11 @@
 
 char *fourth(size_t len) // 4 ввод одномерного денамического масива
 {
+    printf("input els\n");
     char *list_ch = new char[len];
     for (size_t i = 0; i < len; i++)
     {
+        
         scanf("\n%c", &list_ch[i]);
     }
     return list_ch;
@@ -26,15 +28,17 @@ void output(char *list_ch, size_t len) // 4 ввывод одномерного 
 
 char **fifth(size_t m, size_t n) // 5 ввод двумерного денамического масива
 {
+    printf("input els\n");
     char **list_ch = new char *[m]; // создаём пустой динамический масив указателей
     for (size_t i = 0; i < m; i++)
     {
         list_ch[i] = new char[n]; // создаём динамический масив целых чисел
         for (size_t j = 0; j < n; j++)
         {
-            scanf("%c", &list_ch[i][j]);
+            scanf("\n%c", &list_ch[i][j]);
         }
     }
+    printf("\n");
     return list_ch;
 }
 
@@ -66,6 +70,7 @@ int main(int argc, char const *argv[])
         int len;
         printf("input len   ");
         scanf("%d", &len);
+        printf("input elements\n");
         char *list_ch = new char[len];
         for (size_t i = 0; i < len; i++)
         {
@@ -84,7 +89,7 @@ int main(int argc, char const *argv[])
         {
             if (list_ch[i]=='a')    count++;
         }
-        printf("кол-во 'a'=%d",count);
+        printf("кол-во 'a'=%d\n",count);
 
         // освобождаем память
         delete [] list_ch;//освобождаем все элименты в list_ch(числа)
@@ -101,11 +106,14 @@ int main(int argc, char const *argv[])
     {
         // ввод масива
         int len;
+        printf("input len\n");
         scanf("\n%d", &len);
         char *list_ch = fourth(len);
 
         // вывести кол-во 'abc'
         int count = 0;
+        printf("input elements\n");
+    
         for (size_t i = 0; i < len - 2; i++)
         {
             if (list_ch[i] == 'a' && list_ch[i + 1] == 'b' && list_ch[i + 2] == 'c')
@@ -113,7 +121,8 @@ int main(int argc, char const *argv[])
                 count++;
             }
         }
-        printf("count of 'abc'=%d", count);
+        
+        printf("count of 'abc'=%d\n", count);
 
         // совобождаем память
         delete [] list_ch; //освобождаем все элименты в list_ch(числа)
@@ -127,8 +136,9 @@ int main(int argc, char const *argv[])
     Освободить память.*/
     {
         // ввод длины
-        size_t m, n;
-        scanf("%d%d", m, n);
+        printf("input m,n\n");
+        int m, n;
+        scanf("%d%d", &m, &n);
 
         // ввод массива
         char **list_ch = fifth(m, n);
@@ -138,7 +148,7 @@ int main(int argc, char const *argv[])
         {
             for (size_t j = 0; j < n; j++)
             {
-                printf("%4d", list_ch[i][j]);
+                printf("%c", list_ch[i][j]);
             }
             printf("\n");
         }
@@ -158,7 +168,7 @@ int main(int argc, char const *argv[])
         {
             for (size_t j = 0; j < n; j++)
             {
-                printf("%4d", list_ch[i][j]);
+                printf("%c", list_ch[i][j]);
             }
             printf("\n");
         }

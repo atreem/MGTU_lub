@@ -1,7 +1,7 @@
 #include <iostream>
 
 void input(int *list,size_t len)
-{
+{ //3
     for (size_t i=0;i<len;i++)
     {
         printf("input el %d ",i);
@@ -11,7 +11,7 @@ void input(int *list,size_t len)
 }
 
 void input(int **list,size_t len1,size_t len2)
-{
+{ //4
     for (int i=0;i<len1;i++)
     {
         list[i]=new int [len2];
@@ -31,7 +31,7 @@ void input(int **list,size_t len1,size_t len2)
 
 
 template <size_t len1,size_t len2> void input(int list[len1][len2])
-{
+{ //5
     for (size_t i=0;i<len1;i++)
     {
         for (size_t j=0;j<len2;j++)
@@ -45,7 +45,7 @@ template <size_t len1,size_t len2> void input(int list[len1][len2])
 
 
 void output(int *list,size_t len)
-{   
+{   //3
     for (size_t i=0;i<len;i++)
         {
             printf("%4d",list[i]);
@@ -54,7 +54,7 @@ void output(int *list,size_t len)
 }
 
 void output(int **list,size_t len,size_t len2)
-{   
+{   //4
     for (size_t i=0;i<len;i++)
     {
         printf("%p ",list[i]);
@@ -79,7 +79,7 @@ void output(int **list,size_t len,size_t len2)
 
 
 template <size_t len1,size_t len2> void output(int list[len1][len2])
-{   
+{  //5 
     
     printf("address list = %p",list);
     for (size_t i=0;i<len1;i++)
@@ -119,7 +119,8 @@ int main()
 
 
     /*2.Создать указатель на переменную целого типа "с".
-Попробовать вывести значение указателя. Создать переменную для записи ее адреса в указатель. Ввести с клавиатуры значение переменной.
+Попробовать вывести значение указателя. Создать переменную для записи ее адреса в указатель.
+ Ввести с клавиатуры значение переменной.
 Вывести адрес переменной и ее значение.*/
     {
         int c;
@@ -143,7 +144,8 @@ int main()
     }
 
 
-/*4. В основной программе создать двумерный динамический массив целых чисел d2. Размер массива вводит пользователь.
+/*4. В основной программе создать двумерный динамический массив целых чисел d2.
+ Размер массива вводит пользователь.
 Заполнение массива в функции. Значения элементов вводит пользователь с клавиатуры.
 Вывести в функции адрес массива, массив указателей на строки, значения элементов массива и их адреса.*/
     {
@@ -160,14 +162,17 @@ int main()
 
 
 /*
- В основной программе создать двумерный статический массив целых чисел d3 [2*3]. 
+ 5. В основной программе создать двумерный статический массив целых чисел d3 [2*3]. 
  Заполнение массива в функции. Значения элементов вводит пользователь с клавиатуры.
  Вывести в функции значения элементов массива и их адреса, адрес массива.
 */
     {
-        int d3[2][3];
-        input<2,3>(d3);
-        output<2,3>(d3);
+        printf("input list 2*3");
+        const int a=2;
+        const int b=3;
+        int d3[a][b];
+        input<a,b>(d3);
+        output<a,b>(d3);
     }
 
 
