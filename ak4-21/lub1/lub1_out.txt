@@ -1,0 +1,8 @@
+Petrov Petr 102 4 4 4 5
+Kozlova Anna 104 3 4 4 5
+Morozov Dmitrii 105 4 3 5 4
+Smirnov Oleg 106 5 4 5 4
+Fedorova Elena 107 4 5 5 4
+Vasiliev Artem 108 5 5 4 4
+Nikolaeva Olga 109 5 3 3 5
+Kuznetsov Roman 110 4 4 5 5
