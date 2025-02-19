@@ -13,7 +13,7 @@
 4. Найти максимальный средний балл студентов.
  */
 
- void input(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)
+ void input(int n,FILE *f,char **name,char **farm,int **mark,int *gr)
  {
     for (int i = 0; i < n; i++)
     {
@@ -22,7 +22,7 @@
     }
  }
 
-void first(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//. Вывести на экран и записать в новый файл фамилии и имена студентов, у которых нет двоек.
+void first(int n,FILE *f,char **name,char **farm,int **mark,int *gr)//. Вывести на экран и записать в новый файл фамилии и имена студентов, у которых нет двоек.
 {
     printf("\nstuden without 2:\n");
     FILE *out=fopen("lub1_out.txt","w");
@@ -37,7 +37,7 @@ void first(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//. Вы
 }
 
 
-void second (int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//Пользователь вводит с клавиатуры номер группы, вывести всю информацию о студентах, которые учатся в этой группе.
+void second (int n,FILE *f,char **name,char **farm,int **mark,int *gr)//Пользователь вводит с клавиатуры номер группы, вывести всю информацию о студентах, которые учатся в этой группе.
 {
     printf("\ninput index of grup\n");
     int grub;
@@ -53,7 +53,7 @@ void second (int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//По
     if (!flag) {printf("grup not fuond\n");}
 }
 
-void third(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//. Вывести на экран всю информацию о студентах, у которых за сессию только четверки и пятерки
+void third(int n,FILE *f,char **name,char **farm,int **mark,int *gr)//. Вывести на экран всю информацию о студентах, у которых за сессию только четверки и пятерки
 {
     printf("\nstudentss with only 5 and 4:\n");
     
@@ -67,7 +67,7 @@ void third(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//. Вы
     
 }
 
-void     fourth(int n,FILE *f,char **&name,char **&farm,int **&mark,int *&gr)//Найти максимальный средний балл студентов.
+void     fourth(int n,FILE *f,char **name,char **farm,int **mark,int *gr)//Найти максимальный средний балл студентов.
 {
     double max,sr;
     max=0;
@@ -105,9 +105,7 @@ int main(int argc, char const *argv[])
         mark[i]=new int[4];
     }
     int *gr=new int [n];
-
     
-
 
     input(n,f,name,farm,mark,gr);
     first(n,f,name,farm,mark,gr);
@@ -115,18 +113,18 @@ int main(int argc, char const *argv[])
     third(n,f,name,farm,mark,gr);
     fourth(n,f,name,farm,mark,gr);
 
-    
 
-
-
-   
-    
-
-
-
-
-  
-    
+    fclose(f);
+    for (int i = 0; i < n; i++)
+    {
+        delete [] name[i];
+        delete [] farm[i];
+        delete [] mark[i];
+    }
+    delete [] gr;
+    delete [] name;
+    delete [] farm;
+    delete [] mark;
 
     return 0;
 }
