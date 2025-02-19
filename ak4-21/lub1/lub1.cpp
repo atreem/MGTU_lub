@@ -53,7 +53,7 @@ void second (int n,FILE *f,char **name,char **farm,int **mark,int *gr)//Поль
     if (!flag) {printf("grup not fuond\n");}
 }
 
-void third(int n,FILE *f,char **name,char **farm,int **mark,int *gr)//. Вывести на экран всю информацию о студентах, у которых за сессию только четверки и пятерки
+void third(int n,char **name,char **farm,int **mark,int *gr)//. Вывести на экран всю информацию о студентах, у которых за сессию только четверки и пятерки
 {
     printf("\nstudentss with only 5 and 4:\n");
     
@@ -87,6 +87,11 @@ void     fourth(int n,FILE *f,char **name,char **farm,int **mark,int *gr)//На�
 int main(int argc, char const *argv[])
 {
     FILE *f = fopen("lub1.txt","r");
+    if(f==NULL) 
+    {
+        printf("no such file\n");
+        return 0;
+    }
     int n=0;
     char str [100];
     while (fgets(str,100,f))
@@ -110,7 +115,7 @@ int main(int argc, char const *argv[])
     input(n,f,name,farm,mark,gr);
     first(n,f,name,farm,mark,gr);
     second(n,f,name,farm,mark,gr);
-    third(n,f,name,farm,mark,gr);
+    third(n,name,farm,mark,gr);
     fourth(n,f,name,farm,mark,gr);
 
 

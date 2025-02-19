@@ -1,0 +1,5 @@
+Apples 50 10
+Bananas 70 5
+Oranges 80 8
+Pears 60 12
+Kiwi 90 6
