@@ -1,3 +1,19 @@
+/*
+Лабораторная 4
+(список очередь, вторая часть)
+Создать структуру:
+-поле для записи целого числа (r);
+-поле для записи адреса следующего элемента (next).
+Указатель на первый элемент – не глобальная переменная. При заполнении списка количество элементов заранее не известно. Ввести список с клавиатуры (функция), вывести список на экран (функция).
+Все задания оформить функциями.
+1. Удалить первый элемент. 
+2. После последнего элемента добавить два новых элемента.
+3. Перед первым элементом добавить новый элемент.
+4. Удалить элемент, номер которого ввел пользователь с клавиатуры.
+5. После элемента, номер которого ввел пользователь с клавиатуры, добавить новый элемент, равный десяти.
+6. Удалить из списка элементы, равные введенному пользователем числу.
+
+`*/
 #include <iostream>
 #include <string.h>
 
@@ -13,17 +29,16 @@ void input(sp*&first)
     printf("конец ввода 'stop'\n");
     char str[50];
     sp *last,*cur;
-    
-    
 
-    if (scanf("%s",str),strcmp(str,"stop"))
+
+    if (scanf("%s",str),strcmp(str,"stop"))//первый элемент
     {
         first=new sp;
         first->next=NULL;
         first->r=atoi(str);
         
     }
-    // else return;
+    else return;//если сразу stop-прерываем функцию
     
     last=first;
     
@@ -51,21 +66,21 @@ void output(sp*first)
 
 void t_1(sp *& first)
 {
-    if (first==NULL)  {printf("пусто\n");return;};
+    if (first==NULL)  {printf("пусто\n");return;}//на всякий случай везде проверка.
     sp *old_firs=first;
-    first=first->next;
+    first=first->next;//даж если во втором был NULL(список из 1 элемента) просто пишем его в новый первый, иполучаеться пустой список
     delete old_firs;
 }
 
 void t_2(sp *& first)
 {
-    if (first==NULL)  {printf("пусто\n");return;};
+    if (first==NULL)  {printf("пусто\n");return;}
     sp*now=first;
-    while (now->next!=NULL)
+    while (now->next!=NULL)//находим полседний не NULL элемент 
     {
         now=now->next;
     }
-
+    //скопировал из ввода
     sp *last,*cur;
     last=now;
     char str[50];
@@ -84,7 +99,7 @@ void t_2(sp *& first)
 
 void t_3(sp*&first)
 {
-    if (first==NULL)  {printf("пусто\n");return;};
+    if (first==NULL)  {printf("пусто\n");return;}
     sp*new_first=new sp;
     printf("input new first el\n");
     scanf("%d",&new_first->r);
@@ -94,14 +109,14 @@ void t_3(sp*&first)
 
 void t_4(sp*&first)
 {
-    if (first==NULL)  {printf("пусто\n");return;};
+    if (first==NULL)  {printf("пусто\n");return;}
     printf("input number\n");
     int num;
     scanf("%d",&num);
     sp*now=first;
     sp*last;
     int i=0;
-    
+    // находим нужный элемент, если до него возникает NULL(конец) или он сам является NULL(конец) прирываем перед сложением(i++)
     while (now->next!=NULL)
     {
         i++;
@@ -112,15 +127,15 @@ void t_4(sp*&first)
     
     if (num==1) 
     {
-        t_1(first);
+        t_1(first);//функция удаления первого элимента
     }
 
     else if (i==num)
     {
-        last->next=now->next;
+        last->next=now->next;//если всё норм
     }
     
-    else printf("no elem\n");
+    else printf("no elem\n");//елси i!=num
 
 }
 
@@ -159,6 +174,8 @@ void t_6(sp*&first)
     int num;
     scanf("%d",&num);
 
+    // проверяем не являеться ли первый элимент нужным нам
+    // если все элименты подходят,то по окончанию(NULL) прирываем функцию
     while (first!=NULL&&first->r==num)
     {
         t_1(first);
